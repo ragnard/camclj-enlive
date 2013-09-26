@@ -7,4 +7,4 @@
                  [enlive "1.1.4"]
 
                  [ring "1.2.0"]
-                 [compojure "1.1.5"] ()])
+                 [compojure "1.1.5"]])
