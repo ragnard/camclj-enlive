@@ -31,7 +31,8 @@
 (enlive/deftemplate blog-with-title "walkthrough/blog.html"
   [title]
 
-  [:head :title] (enlive/content title))
+  [:head :title]
+  (enlive/content title))
 
 
 (comment
@@ -57,9 +58,11 @@
 (enlive/deftemplate blog "walkthrough/blog.html"
   [title posts]
 
-  [:head :title] (enlive/content title)
+  [:head :title]
+  (enlive/content title)
 
-  [:#posts] (enlive/content (map #(post (:title %) (:text %)) posts)))
+  [:#posts]
+  (enlive/content (map #(post (:title %) (:text %)) posts)))
 
 (comment
 
