@@ -6,13 +6,11 @@
             
             [camclj-enlive.walkthrough.4-templates :as templates]))
 
-(defn render [seq] (apply str seq))
-
 (defroutes app
   (GET "/" []
-       (render (templates/blog "My amazing blog!"
-                               [{:title "Post 1" :text "Some content..."}
-                                {:title "Post 2" :text "Some different content..."}])))
+       (templates/blog "My amazing blog!"
+                       [{:title "Post 1" :text "Some content..."}
+                        {:title "Post 2" :text "Some different content..."}]))
 
   (route/not-found "<h1>Page not found</h1>"))
 
