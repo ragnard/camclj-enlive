@@ -10,17 +10,19 @@
                                "<p class=\"hest\">World</p>"
                                "</div>"))
 
-(pp html)
+(comment
 
-(pp (enlive/select html [:div]))
+  (pp html)
 
-(pp (enlive/select html [:p]))
+  (pp (enlive/select html [:div]))
 
-(pp (enlive/select html [:div :p]))
+  (pp (enlive/select html [:p]))
 
-(pp (enlive/select html [:div :h1]))
+  (pp (enlive/select html [:div :p]))
 
-(pp (enlive/select html [:div :p.test]))
+  (pp (enlive/select html [:div :h1]))
+
+  (pp (enlive/select html [:div :p.test]))
 
 
-
+  )

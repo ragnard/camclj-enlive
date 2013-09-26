@@ -16,13 +16,17 @@
   [:p]
   (enlive/content text))
 
+(comment
 
-(pp (post "Hello" "My first post!"))
+  (pp (post "Hello" "My first post!"))
+
+  )
 
 
 
 
-;; templates are functions that can transform an entire document
+;; templates are functions that can transform an entire document,
+;; returning a sequence of strings
 
 (enlive/deftemplate blog-with-title "walkthrough/blog.html"
   [title]
@@ -30,15 +34,22 @@
   [:head :title] (enlive/content title))
 
 
-(pp (blog-with-title "My amazing blog"))
+(comment
+
+  (pp (blog-with-title "My amazing blog"))
+
+  )
 
 ;; useful helper function that turns a seq of strings into a single string
 (defn render
   [seq]
   (apply str seq))
 
+(comment
 
-(pp (render (blog-with-title "My amazing blog")))
+  (pp (render (blog-with-title "My amazing blog")))
+
+  )
 
 
 ;; replace 
@@ -50,9 +61,14 @@
 
   [:#posts] (enlive/content (map #(post (:title %) (:text %)) posts)))
 
+(comment
 
-(pp (render (blog "My amazing blog" [{:title "Post 1" :text "Some interesting text"}
-                                      {:title "Post 2" :text "Some more text"}])))
+  (pp (render (blog "My amazing blog"
+                    [{:title "Post 1" :text "Some interesting text"}
+                     {:title "Post 2" :text "Some more text"}])))
+
+
+  )
 
 
 

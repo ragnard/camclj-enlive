@@ -7,8 +7,11 @@
 
 (def basic-html "<p class=\"test\">Hello</p>")
 
-(pp (enlive/html-snippet basic-html))
+(comment
+  
+  (pp (enlive/html-snippet basic-html))
 
+  )
 
 
 
@@ -16,7 +19,12 @@
 
 (def nested-html "<div class=\"centered\"><p class=\"test\">Hello</p></div>")
 
-(pp (enlive/html-snippet nested-html))
+(comment
+
+  (pp (enlive/html-snippet nested-html))
+
+
+  )
 
 
 

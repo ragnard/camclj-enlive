@@ -10,54 +10,14 @@
                "<p class=\"hest\">World</p>"
                "</div>"))
 
-(pp html)
+(comment
+  
+  (pp html)
 
-
-;; return node untouched
-(pp (enlive/sniptest html
-                     [:p.test]
-                     (fn [node] node)))
-
-
-
-;; remove node by returning nil
-(pp (enlive/sniptest html
-                     [:p.test]
-                     (fn [node] nil)))
-
-
-;; update node content
-(pp (enlive/sniptest html
-                     [:p.test]
-                     (fn [node] (assoc node :content "Blahonga!"))))
-
-
-;; update node content in all `p` elements
-(pp (enlive/sniptest html
-                     [:p]
-                     (fn [node] (assoc node :content "Blahonga!"))))
-
-
-;;--------------------------------------------------------------------
-;; transformation functions
-
-;; update node content in all `p` elements
-(pp (enlive/sniptest html
-                     [:p]
-                     (enlive/content "Blahonga!")))
-
-
-;; add a class
-(pp (enlive/sniptest html
-                     [:div]
-                     (enlive/add-class "selected")))
-
-
-;; remove a class and update content
-(pp (enlive/sniptest html
-                     [:div]
-                     (enlive/do-> (enlive/remove-class "centered")
-                                  (enlive/content "Blahonga!"))))
+  ;; return node untouched
+  (pp (enlive/sniptest html
+                       [:p.test]
+                       (fn [node] node)))
 
 
 
@@ -70,3 +30,97 @@
 
 
 
+
+  
+  ;; remove node by returning nil
+  (pp (enlive/sniptest html
+                       [:p.test]
+                       (fn [node] nil)))
+
+
+
+
+
+
+
+  
+
+  ;; update node content
+  (pp (enlive/sniptest html
+                       [:p.test]
+                       (fn [node] (assoc node :content "Goodbye"))))
+
+
+
+
+
+
+
+
+  
+  ;; update node content in all `p` elements
+  (pp (enlive/sniptest html
+                       [:p]
+                       (fn [node] (assoc node :content "Goodbye"))))
+
+
+  ;;--------------------------------------------------------------------
+  ;; transformation functions
+
+  ;; update node content in all `p` elements
+  (pp (enlive/sniptest html
+                       [:p]
+                       (enlive/content "Goodbye")))
+
+
+
+
+
+
+  
+  ;; add a class
+  (pp (enlive/sniptest html
+                       [:div]
+                       (enlive/add-class "selected")))
+
+
+
+
+
+
+
+
+
+
+  
+  ;; remove a class and update content
+  (pp (enlive/sniptest html
+                       [:div]
+                       (enlive/do-> (enlive/remove-class "centered")
+                                    (enlive/content "Goodbye"))))
+
+
+  ;; transform multiple parts of input
+  (pp (enlive/sniptest html
+                       [:p.test]
+                       (enlive/add-class "a")
+
+                       [:p.hest]
+                       (enlive/add-class "b")))
+
+  )
+
+;; a possible, but less than ideal way of creating a re-usable
+;; template fn
+(defn centered-div-template
+  [text]
+  (enlive/sniptest html
+                   [:div]
+                   (enlive/content text)))
+
+
+(comment
+
+  (pp (centered-div-template "Hello World!"))
+
+  )

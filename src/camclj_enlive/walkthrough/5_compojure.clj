@@ -3,7 +3,7 @@
             [compojure.route :as route]
             [ring.adapter.jetty :as jetty]
             [net.cgrand.enlive-html :as enlive]
-
+            
             [camclj-enlive.walkthrough.4-templates :as templates]))
 
 (defn render [seq] (apply str seq))
@@ -31,7 +31,6 @@
      (find-ns 'camclj-enlive.walkthrough.4-templates))
 
     )
-
   )
 
 ;;--------------------------------------------------------------------
